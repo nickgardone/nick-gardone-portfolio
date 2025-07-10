@@ -1,0 +1,35 @@
+{
+  "name": "nick-gardone-portfolio",
+  "version": "1.0.0",
+  "description": "Nick Gardone's Senior Product Manager Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.292.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^14.0.0"
+  },
+  "keywords": [
+    "portfolio",
+    "product-manager",
+    "react",
+    "nextjs",
+    "tailwindcss"
+  ],
+  "author": "Nick Gardone",
+  "license": "MIT"
+} 
