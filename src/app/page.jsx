@@ -81,13 +81,14 @@ export default function Home() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative mx-auto w-32 h-32 md:w-40 md:h-40"
+              className="relative mx-auto w-56 h-56 md:w-72 md:h-72"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full blur-lg opacity-30" />
               <img
-                src="/profile.jpg"
+                src="/profile-headshot-2.png"
                 alt="Nick Gardone"
-                className="relative w-full h-full rounded-full object-cover border-4 border-dark-800"
+                className="relative w-full h-full rounded-full object-cover border-4 border-dark-800 object-center scale-140"
+                style={{ objectPosition: 'center 5%' }}
               />
             </motion.div>
             {/* Main Content */}
