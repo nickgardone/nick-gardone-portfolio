@@ -5,6 +5,7 @@ import { ArrowRight, Download, Mail, Linkedin, Github } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProjectTeaser from '../components/ProjectTeaser';
+import RecommendationsCarousel from '../components/RecommendationsCarousel';
 
 export default function Home() {
   const featuredProjects = [
@@ -136,15 +137,6 @@ export default function Home() {
                 <span>View My Work</span>
                 <ArrowRight size={18} />
               </motion.a>
-              <motion.a
-                href="/resume"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-secondary flex items-center space-x-2"
-              >
-                <Download size={18} />
-                <span>Download Resume</span>
-              </motion.a>
             </motion.div>
             {/* Social Links */}
             <motion.div
@@ -253,67 +245,44 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      {/* About Preview */}
+      {/* Recommendations Section */}
       <section className="section-padding bg-dark-900">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                About Me
-              </h2>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                I'm a Senior Product Manager with over 8 years of experience building 
-                and scaling digital products. I've worked with startups and enterprise 
-                companies, always focusing on user needs and business outcomes.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                My approach combines data-driven decision making with creative problem 
-                solving, ensuring that every product I work on delivers real value to 
-                users and drives business growth.
-              </p>
-              <motion.a
-                href="/about"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-secondary inline-flex items-center space-x-2"
-              >
-                <span>Learn More</span>
-                <ArrowRight size={18} />
-              </motion.a>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6"
-            >
-              <div className="card">
-                <h3 className="text-xl font-semibold text-white mb-4">Core Skills</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    'Product Strategy',
-                    'User Research',
-                    'Data Analysis',
-                    'Team Leadership',
-                    'Agile/Scrum',
-                    'A/B Testing',
-                    'User Experience',
-                    'Stakeholder Management'
-                  ].map((skill) => (
-                    <div key={skill} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
-                      <span className="text-gray-300 text-sm">{skill}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Recommendations
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              What my colleagues say about working with me.
+            </p>
+          </motion.div>
+          <RecommendationsCarousel
+            recommendations={[
+              {
+                text: 'Nick is an outstanding product manager who always puts the user first. His leadership and vision were key to our project’s success.',
+                name: 'Jane Doe',
+                role: 'Lead Designer, Acme Corp',
+                avatar: '/profile.jpg',
+              },
+              {
+                text: 'Working with Nick was a pleasure. He communicates clearly and drives results with a positive attitude.',
+                name: 'John Smith',
+                role: 'Engineering Manager, Beta Inc',
+                avatar: '/profile-headshot-2.png',
+              },
+              {
+                text: 'Nick’s strategic thinking and attention to detail set him apart. He’s a true asset to any team.',
+                name: 'Emily Chen',
+                role: 'Product Owner, Gamma LLC',
+                avatar: '/Profile-headshot.png',
+              },
+            ]}
+          />
         </div>
       </section>
       <Footer />

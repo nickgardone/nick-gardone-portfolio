@@ -20,8 +20,6 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'About', href: '/about' },
-    { name: 'Resume', href: '/resume' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -42,10 +40,12 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">NG</span>
-            </div>
-            <span className="text-xl font-bold gradient-text">Nick Gardone</span>
+            <a href="/" className="flex items-center space-x-2 focus:outline-none" aria-label="Go to home page">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">NG</span>
+              </div>
+              <span className="text-xl font-bold gradient-text">Nick Gardone</span>
+            </a>
           </motion.div>
 
           {/* Desktop Navigation */}

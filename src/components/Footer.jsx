@@ -39,10 +39,12 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">NG</span>
-              </div>
-              <span className="text-xl font-bold gradient-text">Nick Gardone</span>
+              <a href="/" className="flex items-center space-x-2 focus:outline-none" aria-label="Go to home page">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">NG</span>
+                </div>
+                <span className="text-xl font-bold gradient-text">Nick Gardone</span>
+              </a>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Senior Product Manager passionate about building user-centric products 
@@ -59,7 +61,7 @@ const Footer = () => {
           >
             <h3 className="text-white font-semibold text-lg">Quick Links</h3>
             <ul className="space-y-2">
-              {['Portfolio', 'About', 'Resume', 'Contact'].map((link) => (
+              {['Portfolio', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href={`/${link.toLowerCase()}`}
