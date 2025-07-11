@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useSwipeable } from 'react-swipeable';
+
+const useResponsiveVisibleCount = () => {
+  const [visibleCount, setVisibleCount] = useState(2);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else {
+        setVisibleCount(2);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return visibleCount;
+};
 
 const RecommendationsCarousel = ({ recommendations }) => {
+  const visibleCount = useResponsiveVisibleCount();
   const [start, setStart] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const visibleCount = 2; // Show two at a time
   const total = recommendations.length;
 
   // Compute the indices of the visible recommendations
@@ -23,6 +41,13 @@ const RecommendationsCarousel = ({ recommendations }) => {
   const pageCount = Math.ceil(total / visibleCount);
   // The current page index
   const currentPage = Math.floor(start / visibleCount);
+
+  // Swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: next,
+    onSwipedRight: prev,
+    trackMouse: true,
+  });
 
   return (
     <div className="relative w-full max-w-5xl mx-auto">
@@ -44,7 +69,7 @@ const RecommendationsCarousel = ({ recommendations }) => {
           </button>
         </div>
       )}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden" {...swipeHandlers}>
         <div className="flex gap-6 justify-center">
           {visibleIndices.map((i) => {
             const isLong = recommendations[i].text.length > 500;
