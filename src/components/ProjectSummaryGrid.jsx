@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Clock, Users, ArrowRight } from 'lucide-react';
 
-const ProjectSummaryGrid = () => {
+const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
   const projects = [
     {
       title: "Chase MyHome Platform",
@@ -103,6 +103,8 @@ const ProjectSummaryGrid = () => {
     }
   ];
 
+  const displayedProjects = limit ? projects.slice(0, limit) : projects;
+
   return (
     <section className="py-16 bg-dark-950">
       <div className="container-custom px-4">
@@ -123,7 +125,7 @@ const ProjectSummaryGrid = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -220,25 +222,41 @@ const ProjectSummaryGrid = () => {
               </div>
             </motion.div>
           ))}
+          {/* Show View All Projects button after Nth tile if showViewAllAfter is set */}
+          {showViewAllAfter && displayedProjects.length >= showViewAllAfter && (
+            <div className="col-span-full flex justify-center mt-6">
+              <motion.a
+                href="/portfolio"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <span>View All Projects</span>
+                <ArrowRight size={20} />
+              </motion.a>
+            </div>
+          )}
         </div>
 
-        {/* View All Projects CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <motion.a
-            href="/portfolio"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+        {/* View All Projects CTA (default at bottom if not using showViewAllAfter) */}
+        {!showViewAllAfter && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center"
           >
-            <span>View All Projects</span>
-            <ArrowRight size={20} />
-          </motion.a>
-        </motion.div>
+            <motion.a
+              href="/portfolio"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <span>View All Projects</span>
+              <ArrowRight size={20} />
+            </motion.a>
+          </motion.div>
+        )}
       </div>
     </section>
   );
