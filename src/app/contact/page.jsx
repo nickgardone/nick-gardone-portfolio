@@ -18,16 +18,26 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        // Reset success message after 3 seconds
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        // Optionally handle error
+        alert('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      alert('Failed to send message. Please try again later.');
+    }
     setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const handleChange = (e) => {
@@ -79,8 +89,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold">Email</h3>
-                    <a href="mailto:nick@nickgardone.com" className="text-blue-400 hover:text-blue-300">
-                      nick@nickgardone.com
+                    <a href="mailto:NGardone@Gmail.com" className="text-blue-400 hover:text-blue-300">
+                      NGardone@Gmail.com
                     </a>
                   </div>
                 </div>
@@ -91,8 +101,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold">Phone</h3>
-                    <a href="tel:+1234567890" className="text-blue-400 hover:text-blue-300">
-                      +1 (234) 567-890
+                    <a href="tel:+15857470213" className="text-blue-400 hover:text-blue-300">
+                      +1 (585) 747-0213
                     </a>
                   </div>
                 </div>
