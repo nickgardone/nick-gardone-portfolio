@@ -21,7 +21,7 @@ const Footer = () => {
     },
     {
       name: 'Email',
-      href: 'mailto:nick@nickgardone.com',
+      href: 'mailto:NGardone@Gmail.com',
       icon: Mail,
       color: 'hover:text-red-400',
     },

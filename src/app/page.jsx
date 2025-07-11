@@ -2,10 +2,24 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Mail, Linkedin, Github } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProjectSummaryGrid from '../components/ProjectSummaryGrid';
 import RecommendationsCarousel from '../components/RecommendationsCarousel';
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return isMobile;
+}
 
 export default function Home() {
 
@@ -15,6 +29,7 @@ export default function Home() {
     { label: "Team Members Led", value: "50+" },
     { label: "Revenue Impact", value: "$100M+" },
   ];
+  const isMobile = useIsMobile();
 
   return (
     <div className="min-h-screen bg-dark-950">
@@ -113,7 +128,7 @@ export default function Home() {
               className="flex items-center justify-center space-x-6 pt-8"
             >
               <motion.a
-                href="mailto:nick@nickgardone.com"
+                href="mailto:NGardone@Gmail.com"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="p-3 rounded-lg bg-dark-800 border border-gray-700 text-gray-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
@@ -173,7 +188,11 @@ export default function Home() {
         </div>
       </section>
       {/* Featured Projects */}
-      <ProjectSummaryGrid />
+      {isMobile ? (
+        <ProjectSummaryGrid limit={4} showViewAllAfter={4} />
+      ) : (
+        <ProjectSummaryGrid />
+      )}
       {/* Recommendations Section */}
       <section className="section-padding bg-dark-900">
         <div className="container-custom">
