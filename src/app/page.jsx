@@ -4,49 +4,16 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, Mail, Linkedin, Github } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ProjectTeaser from '../components/ProjectTeaser';
+import ProjectSummaryGrid from '../components/ProjectSummaryGrid';
 import RecommendationsCarousel from '../components/RecommendationsCarousel';
 
 export default function Home() {
-  const featuredProjects = [
-    {
-      title: "E-commerce Platform Redesign",
-      description: "Led the complete redesign of a major e-commerce platform, resulting in 40% increase in conversion rates and 25% improvement in user engagement.",
-      image: "/api/placeholder/600/400",
-      category: "Product Strategy",
-      duration: "6 months",
-      teamSize: "8 people",
-      technologies: ["React", "Node.js", "AWS", "Analytics"],
-      link: "/portfolio/ecommerce-redesign",
-      featured: true,
-    },
-    {
-      title: "Mobile App Launch",
-      description: "Successfully launched a mobile app from concept to 100K+ downloads, managing cross-functional teams and stakeholder expectations.",
-      image: "/api/placeholder/600/400",
-      category: "Mobile Product",
-      duration: "12 months",
-      teamSize: "12 people",
-      technologies: ["React Native", "Firebase", "Stripe", "Analytics"],
-      link: "/portfolio/mobile-app-launch",
-    },
-    {
-      title: "SaaS Platform Optimization",
-      description: "Optimized a SaaS platform's user onboarding flow, reducing churn by 30% and increasing trial-to-paid conversion by 45%.",
-      image: "/api/placeholder/600/400",
-      category: "Growth",
-      duration: "4 months",
-      teamSize: "6 people",
-      technologies: ["A/B Testing", "Analytics", "User Research"],
-      link: "/portfolio/saas-optimization",
-    },
-  ];
 
   const stats = [
-    { label: "Years Experience", value: "8+" },
+    { label: "Years Experience", value: "10+" },
     { label: "Products Launched", value: "15+" },
     { label: "Team Members Led", value: "50+" },
-    { label: "Revenue Impact", value: "$10M+" },
+    { label: "Revenue Impact", value: "$100M+" },
   ];
 
   return (
@@ -206,45 +173,7 @@ export default function Home() {
         </div>
       </section>
       {/* Featured Projects */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Featured Projects
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              A selection of my most impactful work, showcasing product strategy, 
-              user experience design, and business outcomes.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredProjects.map((project, index) => (
-              <ProjectTeaser key={project.title} project={project} index={index} />
-            ))}
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mt-12"
-          >
-            <motion.a
-              href="/portfolio"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary inline-flex items-center space-x-2"
-            >
-              <span>View All Projects</span>
-              <ArrowRight size={18} />
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
+      <ProjectSummaryGrid />
       {/* Recommendations Section */}
       <section className="section-padding bg-dark-900">
         <div className="container-custom">
