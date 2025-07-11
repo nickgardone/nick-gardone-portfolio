@@ -54,13 +54,6 @@ const RecommendationsCarousel = ({ recommendations }) => {
             >
               <p className="text-lg text-gray-200 mb-4">"{recommendations[i].text}"</p>
               <div className="flex items-center space-x-4 mt-4">
-                {recommendations[i].avatar && (
-                  <img
-                    src={recommendations[i].avatar}
-                    alt={recommendations[i].name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-primary-500"
-                  />
-                )}
                 <div>
                   <div className="text-primary-400 font-semibold">{recommendations[i].name}</div>
                   <div className="text-gray-400 text-sm">{recommendations[i].role}</div>
