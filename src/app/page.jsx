@@ -193,22 +193,52 @@ export default function Home() {
           <RecommendationsCarousel
             recommendations={[
               {
-                text: 'Nick is an outstanding product manager who always puts the user first. His leadership and vision were key to our project’s success.',
-                name: 'Jane Doe',
-                role: 'Lead Designer, Acme Corp',
+                text: `I worked with Nick for years in a fast-paced digital environment on many high profile projects, and I can confidently say he was one of the most creative and collaborative product partners I’ve ever worked with. I deeply value cross-functional collaboration and care for user-centered product creation and Nick truly excelled at both. He brought thoughtful, innovative solutions to complex problems and always approached challenges with curiosity.\n\nI will always appreciate how well he integrated with our design and research teams in particular. He understood the value of user insight and design thinking, working with us not just as a stakeholder, but as a true partner in shaping product strategy. His ability to connect business goals with user needs consistently saw success and helped drive our experiences forward.\n\nBeyond all of his capabilities and accomplishments, he was sincerely wonderful to work with. Sharp, open-minded, and genuinely supportive. Any product team would be lucky to have him and I hope we can work together again in the future!`,
+                name: 'Courtney Stewart',
+                role: 'Senior Creative Director, Signet Jewelers',
                 avatar: '/profile.jpg',
               },
               {
-                text: 'Working with Nick was a pleasure. He communicates clearly and drives results with a positive attitude.',
-                name: 'John Smith',
-                role: 'Engineering Manager, Beta Inc',
+                text: `I have worked with Nick for about 5 years at Signet Jewelers. In this time, he drove the vision, roadmap, and delivery of solutions for our Delivery and Pickup team on the Purchase domain and later for our Digital Storefront team within the Shop domain.\n\nWhile these are vastly different areas, I found that he is able to adapt to new areas quickly and is passionate about his work, whatever that may be. I always appreciated that these roadmap items were backed by solid data, as Nick would dive deep into our Voice of Customer data and really understand and empathize with the needs of our customers.\n\nI am happy to recommend Nick for his next role as Product Manager at a fast paced and competitive environment.`,
+                name: 'Dan Henry',
+                role: 'Enterprise Architect, Signet Jewelers',
                 avatar: '/profile-headshot-2.png',
               },
               {
-                text: 'Nick’s strategic thinking and attention to detail set him apart. He’s a true asset to any team.',
-                name: 'Emily Chen',
-                role: 'Product Owner, Gamma LLC',
+                text: `I've had the privilege of partnering with Nick across several critical omnichannel initiatives—including BOPIS, Same Day Delivery, and UPS Access Point pickup. Nick brings a rare blend of strategic thinking and executional excellence to the Delivery and Pickup domain, always anchored in a strong customer-first mindset.\n\nWhat truly stands out is Nick's ability to bring cross-functional teams together. Whether collaborating with Tech, UX, or Customer Insights, Nick fosters alignment and momentum by deeply listening, seeking diverse perspectives, and ensuring every decision maps back to real customer needs. His empathy—not just for customers but for internal stakeholders—creates a collaborative environment where the best ideas can take shape.\n\nNick is someone who leads with clarity and purpose. His partnership has had a meaningful impact on both the customer experience and how teams work together to deliver it. I’m grateful for the opportunity to have worked alongside them.`,
+                name: 'Swati Venkatraman',
+                role: 'Director of Product Management, Signet Jewelers',
                 avatar: '/Profile-headshot.png',
+              },
+              {
+                text: `Nick is a fantastic product manager, with strong leadership skills as well as an execution-focused mindset. He reported to me on the Signet Digital team, where he spearheaded several initiatives within the Connected Commerce area. Nick’s collaboration skills set him apart: he partnered with technology, design, and operations teams to deliver enhancements, and forged strong relationships across the entire org. He skillfully prioritizes features, maintains a user-focused approach, and incorporates analytics into decision making - all critical skills for a PM. Above all, Nick is a self-starter and holds himself accountable for results, finding solutions even when challenges arise. Nick is a truly wonderful collaborator and leader, and any product team would be lucky to have him onboard!`,
+                name: 'Yulia Anontseva',
+                role: 'Director of Product Management, Signet Jewelers',
+                avatar: '/profile-headshot-2.png',
+              },
+              {
+                text: `I had the pleasure of working with Nick via partnership and I was consistently impressed by his ability to steer toward a clear vision, his professionalism, his organization, and his collaborative approach. Nick brings a balance of strategic insight and hands-on involvement, making the projects that we partnered on not only productive but genuinely enjoyable. His communication is always timely and clear, which made our work together very efficient. I recommend Nick to anyone looking for a forward-thinking, results-driven professional.`,
+                name: 'Matt Hanan',
+                role: 'Chief Client Officer, Creatable',
+                avatar: '/profile.jpg',
+              },
+              {
+                text: `Nick is the kind of teammate everyone hopes to have. We worked together on the delivery and pickup product team at Signet, where he led initiatives that spanned the entire site and involved close collaboration across nearly every department. His leadership pushed me to grow as a designer—to stay curious and approach complex problems with confidence and persistence.\n\nNick brings a sharp mind, contagious energy, and a clear focus on creating meaningful, user-centered experiences. No matter the challenge, he stays grounded and keeps things moving. Thoughtful, driven, and genuinely collaborative—he’s a true asset to any team.`,
+                name: 'Kathleen Johnson',
+                role: 'Creative Director, Signet Jewelers',
+                avatar: '/profile-headshot-2.png',
+              },
+              {
+                text: `Nick is a wonderful business partner. My team and I worked with him closely on multiple digital projects, across different areas of the website. As brand partners we felt informed, involved and heard throughout the scoping and development processes. Nick’s communication skills ensured that we were all aligned to the final product that would be delivered. \n\nSynergy between many different teams within a large organization can be challenging, but he took on that challenge and made it look easy. Nick is a pleasure to work with - always coming to the table with a positive attitude, collaborative spirit and ultimately driving meaningful results. `,
+                name: 'Andrea Waris',
+                role: 'Director, E-Commerce Content and Site Experience, Signet Jewelers',
+                avatar: '/profile.jpg',
+              },
+              {
+                text: `I had the pleasure of managing Nick during his time as a Sr. Product Manager at Signet Jewelers. I was impressed by his ability to build strong cross-functional relationships, craft thoughtful product strategies, and deeply understand customer needs. I appreciated his persistence to push initiatives forward as well as his desire to create a positive and fun team culture. Any team would be lucky to have him.`,
+                name: 'Jaime Colon',
+                role: 'VP, Digital Product, Signet Jewelers',
+                avatar: '/profile.jpg',
               },
             ]}
           />
