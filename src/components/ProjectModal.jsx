@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Calendar, Users, ArrowRight } from 'lucide-react';
+import { X, Calendar, Users } from 'lucide-react';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
   // Handle escape key and prevent body scroll
@@ -33,10 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     overview,
     duration,
     teamSize,
-    tags,
-    link,
-    hasCaseStudy,
-    hasDemo
+    tags
   } = project;
 
   const handleBackdropClick = (e) => {
@@ -109,35 +106,6 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               <Users size={16} />
               <span>{teamSize}</span>
             </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-800">
-            {hasCaseStudy && (
-              <a
-                href={`${link}/case-study`}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-xl transition-colors duration-200"
-              >
-                <span>View Case Study</span>
-                <ExternalLink size={16} />
-              </a>
-            )}
-            {hasDemo && (
-              <a
-                href={`${link}/demo`}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-accent-600 hover:bg-accent-500 text-white font-medium rounded-xl transition-colors duration-200"
-              >
-                <span>View Demo</span>
-                <ArrowRight size={16} />
-              </a>
-            )}
-            <a
-              href={link}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-dark-800 hover:bg-dark-700 text-gray-300 hover:text-white font-medium rounded-xl border border-gray-700 transition-colors duration-200"
-            >
-              <span>View Details</span>
-              <ArrowRight size={16} />
-            </a>
           </div>
         </div>
       </motion.div>
