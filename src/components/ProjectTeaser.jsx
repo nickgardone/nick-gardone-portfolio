@@ -101,16 +101,7 @@ const ProjectTeaser = ({ project, index }) => {
               </div>
 
               {/* Project Meta */}
-              <div className="flex items-center space-x-4 text-xs text-gray-400">
-                <div className="flex items-center space-x-1">
-                  <Calendar size={12} />
-                  <span>{duration}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Users size={12} />
-                  <span>{teamSize}</span>
-                </div>
-              </div>
+              {/* Removed duration and team size display */}
 
               {/* Technologies */}
               <div className="flex flex-wrap gap-2">

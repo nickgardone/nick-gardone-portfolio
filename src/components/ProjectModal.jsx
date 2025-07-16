@@ -96,17 +96,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <p className="text-gray-300 leading-relaxed">{overview}</p>
           </div>
 
-          {/* Project Meta */}
-          <div className="flex items-center gap-6 text-sm text-gray-400">
-            <div className="flex items-center gap-2">
-              <Calendar size={16} />
-              <span>{duration}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users size={16} />
-              <span>{teamSize}</span>
-            </div>
-          </div>
+          {/* Project Meta (duration/team size) - removed */}
         </div>
       </motion.div>
     </div>

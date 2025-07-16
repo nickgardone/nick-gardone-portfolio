@@ -63,14 +63,6 @@ const CaseStudyPage = ({ project, onBack }) => {
               <span className="px-3 py-1 bg-primary-600/20 text-primary-400 rounded-full border border-primary-500/30">
                 {category}
               </span>
-              <span className="flex items-center space-x-1">
-                <Calendar size={14} />
-                <span>{duration}</span>
-              </span>
-              <span className="flex items-center space-x-1">
-                <Users size={14} />
-                <span>{teamSize}</span>
-              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
@@ -207,14 +199,6 @@ const CaseStudyPage = ({ project, onBack }) => {
                   <div>
                     <span className="text-gray-400 text-sm">Role</span>
                     <p className="text-white font-medium">{role}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-400 text-sm">Duration</span>
-                    <p className="text-white font-medium">{duration}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-400 text-sm">Team Size</span>
-                    <p className="text-white font-medium">{teamSize}</p>
                   </div>
                 </div>
               </motion.div>

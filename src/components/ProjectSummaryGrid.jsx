@@ -15,8 +15,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "VP, Senior Product Manager @ JPMorgan Chase",
       headline: "Launched home lending platform used by 5M+ customers, driving 2M+ visits.",
       overview: "Built a self-service digital mortgage platform integrated into Chase Mobile & Web, increasing HELOC applications by 4%.",
-      duration: "12 months",
-      teamSize: "15 people",
       tags: ["Enterprise", "Fintech", "React", "SaaS"],
       link: "#",
       hasCaseStudy: true,
@@ -27,8 +25,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Transformed call data into product insights using LLMs.",
       overview: "Used AI to summarize customer service calls, categorize sentiment, and reduce post-call work for agents.",
-      duration: "6 months",
-      teamSize: "6 people",
       tags: ["AI/ML", "LLM", "Customer Experience", "Automation"],
       link: "#",
       hasCaseStudy: true,
@@ -39,8 +35,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Drove $36M+ in annual revenue via improved checkout UX.",
       overview: "Led experimentation and UX optimization to increase conversion rates across e-commerce properties.",
-      duration: "Multi-year",
-      teamSize: "Cross-functional teams",
       tags: ["A/B Testing", "E-commerce", "Analytics", "UX"],
       link: "#",
       hasCaseStudy: true,
@@ -51,8 +45,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Boosted tool adoption from 60% to 82%, driving $25M in new revenue.",
       overview: "Increased Jewelry Consultant adoption of digital storefront tools with SSO access and structured campaigns, enabling remote selling.",
-      duration: "6 months",
-      teamSize: "8 people",
       tags: ["RetailTech", "Internal Tools", "UX", "Growth"],
       link: "#",
       hasCaseStudy: false,
@@ -63,8 +55,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Reduced package loss by 7% and generated $6.5M in revenue.",
       overview: "Integrated UPS Access Point delivery option to improve logistics and customer satisfaction, coordinating with 200+ vendors.",
-      duration: "9 months",
-      teamSize: "12 people",
       tags: ["Logistics", "E-commerce", "API Integration", "CX"],
       link: "#",
       hasCaseStudy: true,
@@ -75,8 +65,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Reduced 62K annual customer service calls with milestone-based SMS/email updates.",
       overview: "Launched automated messaging across Signet brands for real-time order tracking, integrating with third-party SaaS platforms.",
-      duration: "4 months",
-      teamSize: "6 people",
       tags: ["Notifications", "CRM", "Customer Support", "SaaS Integration"],
       link: "#",
       hasCaseStudy: false,
@@ -87,8 +75,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "AVP, Product Manager @ JPMorgan Chase",
       headline: "Saved up to 9 FTE per bot through strategic automation.",
       overview: "Evangelized and built an RPA program for internal business processes, including feasibility scoring and stakeholder training.",
-      duration: "6–9 months",
-      teamSize: "5 people",
       tags: ["RPA", "Change Management", "Enterprise Tools", "Operations"],
       link: "#",
       hasCaseStudy: true,
@@ -99,8 +85,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "AVP, Product Owner @ JPMorgan Chase",
       headline: "Migrated 1.5M accounts, sunsetting legacy platforms and roles.",
       overview: "Consolidated disparate mortgage accounts into unified systems through strategic field mapping, logic generation, and simultaneous dual-system updates.",
-      duration: "12+ months",
-      teamSize: "10+ people",
       tags: ["Data Migration", "Fintech", "Legacy Systems", "Systems Integration"],
       link: "#",
       hasCaseStudy: true,
@@ -214,17 +198,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
                     {project.overview}
                   </p>
 
-                  {/* Duration & Team Size */}
-                  <div className="flex items-center gap-4 text-xs text-gray-500">
-                    <div className="flex items-center gap-1">
-                      <Clock size={12} />
-                      <span>{project.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Users size={12} />
-                      <span>{project.teamSize}</span>
-                    </div>
-                  </div>
+                  {/* Project Meta (duration/team size) - removed */}
 
                   {/* CTA Button */}
                   <div className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium text-sm group/link transition-colors duration-200">
