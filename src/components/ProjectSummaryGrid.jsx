@@ -15,7 +15,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "VP, Senior Product Manager @ JPMorgan Chase",
       headline: "Launched home lending platform used by 5M+ customers, driving 2M+ visits.",
       overview: "Built a self-service digital mortgage platform integrated into Chase Mobile & Web, increasing HELOC applications by 4%.",
-      tags: ["Enterprise", "Fintech", "React", "SaaS"],
+      tags: ["Enterprise", "Fintech", "SaaS"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false

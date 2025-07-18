@@ -12,7 +12,7 @@ export default function Portfolio() {
       description: "Launched home lending platform used by 5M+ customers, driving 2M+ visits. Built a self-service digital mortgage platform integrated into Chase Mobile & Web, increasing HELOC applications by 4%.",
       image: "/api/placeholder/600/400",
       category: "Fintech",
-      technologies: ["Enterprise", "Fintech", "React", "SaaS"],
+      technologies: ["Enterprise", "Fintech", "SaaS"],
       link: "/portfolio/chase-myhome",
       featured: true,
     },
