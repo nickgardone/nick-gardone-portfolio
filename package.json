@@ -16,7 +16,8 @@
     "nodemailer": "^7.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-swipeable": "^7.0.2"
+    "react-swipeable": "^7.0.2",
+    "validator": "^13.15.15"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
