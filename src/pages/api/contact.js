@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import validator from 'validator';
 
 // Function to verify reCAPTCHA token
 async function verifyRecaptcha(token) {
@@ -34,6 +35,26 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
+  // Sanitize inputs
+  const sanitizedEmail = validator.normalizeEmail(email);
+  const sanitizedName = validator.escape(validator.trim(name));
+  const sanitizedMessage = validator.escape(validator.trim(message));
+
+  // Validate email
+  if (!validator.isEmail(sanitizedEmail || '')) {
+    return res.status(400).json({ message: 'Invalid email address' });
+  }
+
+  // Validate name (letters, spaces, hyphens, apostrophes, 2-50 chars)
+  if (!validator.isLength(sanitizedName, { min: 2, max: 50 }) || !/^[a-zA-Z\s\-']+$/.test(sanitizedName)) {
+    return res.status(400).json({ message: 'Invalid name. Only letters, spaces, hyphens, and apostrophes allowed (2-50 chars).' });
+  }
+
+  // Validate message (10-1000 chars)
+  if (!validator.isLength(sanitizedMessage, { min: 10, max: 1000 })) {
+    return res.status(400).json({ message: 'Message must be between 10 and 1000 characters.' });
+  }
+
   // Validate reCAPTCHA token
   if (!recaptchaToken) {
     return res.status(400).json({ message: 'reCAPTCHA verification required' });
@@ -56,16 +77,16 @@ export default async function handler(req, res) {
 
   try {
     await transporter.sendMail({
-      from: email,
+      from: sanitizedEmail,
       to: 'NGardone@Gmail.com',
-      subject: `New Contact Form Submission from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      subject: `New Contact Form Submission from ${sanitizedName}`,
+      text: `Name: ${sanitizedName}\nEmail: ${sanitizedEmail}\nMessage: ${sanitizedMessage}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${sanitizedName}</p>
+        <p><strong>Email:</strong> ${sanitizedEmail}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${sanitizedMessage.replace(/\n/g, '<br>')}</p>
       `,
     });
     return res.status(200).json({ message: 'Email sent successfully' });
