@@ -58,14 +58,7 @@ const ProjectTeaser = ({ project, index }) => {
         {/* Background Image */}
         <div className="relative h-64 lg:h-80 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 to-dark-950/90 z-10" />
-          {title === "Chase MyHome Platform" ? (
-            <div 
-              className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          ) : (
-            <div className="absolute inset-0 bg-dark-800" />
-          )}
+          <div className="absolute inset-0 bg-dark-800" />
           
           {/* Overlay Content */}
           <div className="relative z-20 h-full flex flex-col justify-between p-6">
