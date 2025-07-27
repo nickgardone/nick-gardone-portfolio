@@ -22,7 +22,12 @@ export default function ContactForm() {
   useEffect(() => {
     const loadRecaptcha = async () => {
       try {
-        await loadRecaptchaScript(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+        const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+        if (siteKey) {
+          await loadRecaptchaScript(siteKey);
+        } else {
+          console.warn('NEXT_PUBLIC_RECAPTCHA_SITE_KEY not set, skipping reCAPTCHA load');
+        }
       } catch (error) {
         console.error('Failed to load reCAPTCHA:', error);
       }
@@ -33,8 +38,17 @@ export default function ContactForm() {
 
   // Execute reCAPTCHA and get token
   const executeRecaptchaToken = async () => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!siteKey) {
+      console.warn('NEXT_PUBLIC_RECAPTCHA_SITE_KEY not set, using mock token');
+      const mockToken = 'mock-token';
+      setRecaptchaToken(mockToken);
+      return mockToken;
+    }
+    
     try {
-      const token = await executeRecaptcha(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, 'contact_form');
+      const token = await executeRecaptcha(siteKey, 'contact_form');
+      console.log('reCAPTCHA token:', token); // Debug log
       setRecaptchaToken(token);
       return token;
     } catch (error) {
@@ -48,18 +62,37 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setError('');
 
+    const TIMEOUT_MS = 15000; // 15 seconds
+    let timeoutId;
+    let didTimeout = false;
+
     try {
       // Get reCAPTCHA token
       const token = await executeRecaptchaToken();
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken: token
-        }),
+      // Timeout promise
+      const timeoutPromise = new Promise((_, reject) => {
+        timeoutId = setTimeout(() => {
+          didTimeout = true;
+          reject(new Error('Request timed out. Please try again later.'));
+        }, TIMEOUT_MS);
       });
+
+      // API call with timeout
+      const response = await Promise.race([
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...formData,
+            recaptchaToken: token
+          }),
+        }),
+        timeoutPromise
+      ]);
+
+      if (didTimeout) return;
+      clearTimeout(timeoutId);
 
       const result = await response.json();
 
@@ -73,8 +106,10 @@ export default function ContactForm() {
       }
     } catch (error) {
       setError(error.message || 'Failed to send message. Please try again later.');
+    } finally {
+      clearTimeout(timeoutId);
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const handleChange = (e) => {
@@ -299,4 +334,4 @@ export default function ContactForm() {
       <Footer />
     </div>
   );
-} 
+}

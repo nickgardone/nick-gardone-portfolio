@@ -4,7 +4,7 @@ const nextConfig = {
   //   appDir: true,
   // },
   images: {
-    domains: ['via.placeholder.com'],
+    domains: ['via.placeholder.com', 'localhost', 'nick-gardone-portfolio.vercel.app'],
   },
   // Security headers configuration
   async headers() {
@@ -22,21 +22,22 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: https: blob: https://via.placeholder.com",
+              "img-src 'self' data: https: blob: https://via.placeholder.com localhost:* nick-gardone-portfolio.vercel.app",
               "font-src 'self' https://fonts.gstatic.com",
-              "connect-src 'self' https://vercel.live https://va.vercel-scripts.com",
-              "frame-src 'none'",
+              "connect-src 'self' https://vercel.live https://va.vercel-scripts.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+              "frame-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
-              "upgrade-insecure-requests"
+              "upgrade-insecure-requests",
+              "frame-ancestors 'self' https://www.google.com https://www.gstatic.com;",
             ].join('; '),
           },
           // Prevent MIME type sniffing
           {
-            key: 'X-Content-Type-Options',
+            key: 'X-Content-Type-Options',  
             value: 'nosniff',
           },
           // Prevent clickjacking
@@ -64,4 +65,4 @@ const nextConfig = {
   trailingSlash: false,
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig

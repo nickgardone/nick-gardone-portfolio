@@ -1,6 +1,11 @@
 // reCAPTCHA utility functions
 
 export const loadRecaptchaScript = (siteKey) => {
+  // If siteKey is not provided, resolve immediately
+  if (!siteKey) {
+    return Promise.resolve(null);
+  }
+  
   return new Promise((resolve, reject) => {
     if (typeof window === 'undefined') {
       reject(new Error('Window is not defined'));
@@ -43,6 +48,12 @@ export const loadRecaptchaScript = (siteKey) => {
 };
 
 export const executeRecaptcha = async (siteKey, action = 'contact_form') => {
+  // If siteKey is not provided, return a mock token
+  if (!siteKey) {
+    console.warn('reCAPTCHA site key not provided, returning mock token');
+    return 'mock-token';
+  }
+  
   try {
     const grecaptcha = await loadRecaptchaScript(siteKey);
     const token = await grecaptcha.execute(siteKey, { action });
@@ -53,20 +64,4 @@ export const executeRecaptcha = async (siteKey, action = 'contact_form') => {
   }
 };
 
-export const verifyRecaptchaToken = async (token) => {
-  try {
-    const response = await fetch('/api/verify-recaptcha', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ token }),
-    });
-
-    const data = await response.json();
-    return data.success;
-  } catch (error) {
-    console.error('reCAPTCHA verification error:', error);
-    return false;
-  }
-}; 
+// This function is not needed as reCAPTCHA verification is handled in the contact API route

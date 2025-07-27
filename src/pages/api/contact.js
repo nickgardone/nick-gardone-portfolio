@@ -50,9 +50,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Invalid name. Only letters, spaces, hyphens, and apostrophes allowed (2-50 chars).' });
   }
 
-  // Validate message (10-1000 chars)
-  if (!validator.isLength(sanitizedMessage, { min: 10, max: 1000 })) {
-    return res.status(400).json({ message: 'Message must be between 10 and 1000 characters.' });
+  // Validate message (0-1000 chars)
+  if (!validator.isLength(sanitizedMessage, { min: 0, max: 1000 })) {
+    return res.status(400).json({ message: 'Message must be between 0 and 1000 characters.' });
   }
 
   // Validate reCAPTCHA token
@@ -64,6 +64,12 @@ export default async function handler(req, res) {
   const isRecaptchaValid = await verifyRecaptcha(recaptchaToken);
   if (!isRecaptchaValid) {
     return res.status(400).json({ message: 'reCAPTCHA verification failed' });
+  }
+
+  // Check if required environment variables are set
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS || !process.env.RECAPTCHA_SECRET_KEY) {
+    console.error('Missing environment variables for email or reCAPTCHA');
+    return res.status(500).json({ message: 'Server configuration error' });
   }
 
   // Configure the transporter
@@ -94,4 +100,4 @@ export default async function handler(req, res) {
     console.error('Email sending error:', error);
     return res.status(500).json({ message: 'Failed to send email', error: error.message });
   }
-} 
+}

@@ -12,11 +12,15 @@ export default function TestRecaptcha() {
     setLoading(true);
     setError('');
     
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!siteKey) {
+      setError('NEXT_PUBLIC_RECAPTCHA_SITE_KEY environment variable not set');
+      setLoading(false);
+      return;
+    }
+    
     try {
-      const recaptchaToken = await executeRecaptcha(
-        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-        'test_action'
-      );
+      const recaptchaToken = await executeRecaptcha(siteKey, 'test_action');
       setToken(recaptchaToken);
     } catch (err) {
       setError(err.message);
@@ -62,4 +66,4 @@ export default function TestRecaptcha() {
       </div>
     </div>
   );
-} 
+}

@@ -11,29 +11,28 @@ const ProjectTeaser = ({ project, index }) => {
 
   const {
     title,
-    description,
+    role,
+    headline,
+    overview,
     image,
-    category,
-    duration,
-    teamSize,
-    technologies,
+    tags,
     link,
     featured = false,
+    hasCaseStudy = false,
+    hasDemo = false,
   } = project;
 
   const handleProjectClick = () => {
     // Convert project data to modal format
     const modalData = {
       title,
-      role: `${category} Project`,
-      headline: description,
-      overview: description,
-      duration,
-      teamSize,
-      tags: technologies,
+      role,
+      headline,
+      overview,
+      tags,
       link,
-      hasCaseStudy: true,
-      hasDemo: false
+      hasCaseStudy,
+      hasDemo
     };
     setModalProject(modalData);
     setIsModalOpen(true);
@@ -59,19 +58,34 @@ const ProjectTeaser = ({ project, index }) => {
         {/* Background Image */}
         <div className="relative h-64 lg:h-80 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 to-dark-950/90 z-10" />
-          <div 
-            className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
-            style={{ backgroundImage: `url(${image})` }}
-          />
+          {title === "Chase MyHome Platform" ? (
+            <div 
+              className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700"
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-dark-800" />
+          )}
           
           {/* Overlay Content */}
           <div className="relative z-20 h-full flex flex-col justify-between p-6">
             {/* Top Section */}
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <span className="inline-block px-3 py-1 bg-primary-600/20 text-primary-400 text-xs font-medium rounded-full border border-primary-500/30">
-                  {category}
-                </span>
+                {Array.isArray(tags)
+                  ? tags.slice(0, 3).map((tag, idx) => (
+                      <span
+                        key={tag}
+                        className="inline-block px-3 py-1 bg-primary-600/20 text-primary-400 text-xs font-medium rounded-full border border-primary-500/30 mr-2 mb-2"
+                      >
+                        {tag}
+                      </span>
+                    ))
+                  : (
+                      <span className="inline-block px-3 py-1 bg-primary-600/20 text-primary-400 text-xs font-medium rounded-full border border-primary-500/30">
+                        {tags}
+                      </span>
+                    )}
                 {featured && (
                   <span className="inline-block px-3 py-1 bg-accent-600/20 text-accent-400 text-xs font-medium rounded-full border border-accent-500/30 ml-2">
                     Featured
@@ -96,7 +110,7 @@ const ProjectTeaser = ({ project, index }) => {
                   {title}
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
-                  {description}
+                  {headline}
                 </p>
               </div>
 
@@ -105,17 +119,19 @@ const ProjectTeaser = ({ project, index }) => {
 
               {/* Technologies */}
               <div className="flex flex-wrap gap-2">
-                {technologies.slice(0, 3).map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-dark-800/50 text-gray-300 text-xs rounded border border-gray-700"
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {technologies.length > 3 && (
+                {Array.isArray(tags)
+                  ? tags.slice(3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 bg-dark-800/50 text-gray-300 text-xs rounded border border-gray-700"
+                      >
+                        {tag}
+                      </span>
+                    ))
+                  : null}
+                {Array.isArray(tags) && tags.length > 6 && (
                   <span className="px-2 py-1 bg-dark-800/50 text-gray-500 text-xs rounded border border-gray-700">
-                    +{technologies.length - 3} more
+                    +{tags.length - 6} more
                   </span>
                 )}
               </div>
@@ -152,4 +168,4 @@ const ProjectTeaser = ({ project, index }) => {
   );
 };
 
-export default ProjectTeaser; 
+export default ProjectTeaser;

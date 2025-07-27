@@ -65,7 +65,8 @@ export default function Projects() {
                 Get In Touch
               </motion.a>
               <motion.a
-                href="/resume"
+                href="/Nick_Gardone_Resume_2025.pdf"
+                download="Nick_Gardone_Resume_2025.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-secondary"
@@ -80,4 +81,4 @@ export default function Projects() {
       <Footer />
     </div>
   );
-} 
+}
