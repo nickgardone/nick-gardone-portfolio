@@ -77,6 +77,16 @@ export default async function handler(req, res) {
                         process.env.GMAIL_PASS !== 'your_gmail_app_password';
   const hasRecaptchaConfig = process.env.RECAPTCHA_SECRET_KEY && process.env.RECAPTCHA_SECRET_KEY !== 'your_recaptcha_secret_key_here';
   
+  // Log environment configuration for debugging (without exposing secrets)
+  console.log('Environment check:', {
+    isDevEnvironment,
+    hasGmailConfig,
+    hasRecaptchaConfig,
+    gmailUser: process.env.GMAIL_USER ? 'SET' : 'NOT_SET',
+    recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? 'SET' : 'NOT_SET',
+    recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY ? 'SET' : 'NOT_SET'
+  });
+  
   // In development, we can simulate success without actual email sending
   if (isDevEnvironment && !hasGmailConfig) {
     console.warn('Gmail not configured, simulating successful email send in development');

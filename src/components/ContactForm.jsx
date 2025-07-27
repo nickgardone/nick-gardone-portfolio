@@ -105,7 +105,12 @@ export default function ContactForm() {
         // Reset success message after 5 seconds
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        setError(result.message || 'Failed to send message. Please try again later.');
+        // Provide more specific error messages
+        if (result.details) {
+          setError(`${result.message} - ${result.details}`);
+        } else {
+          setError(result.message || 'Failed to send message. Please try again later.');
+        }
       }
     } catch (error) {
       setError(error.message || 'Failed to send message. Please try again later.');
