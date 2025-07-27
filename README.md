@@ -125,6 +125,35 @@ Update the projects array in:
 - `src/pages/index.jsx` (featured projects)
 - `src/pages/portfolio.jsx` (all projects)
 
+### Contact Form Configuration
+To enable the contact form functionality, you need to set up environment variables:
+
+1. Create a `.env.local` file in the root directory
+2. Add the following variables:
+   ```
+   # Gmail Configuration (required for contact form)
+   GMAIL_USER=your_gmail_address@gmail.com
+   GMAIL_PASS=your_gmail_app_password
+
+   # Google reCAPTCHA v3 (optional but recommended)
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
+   RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key_here
+   ```
+
+For Gmail configuration:
+- Enable 2-Factor Authentication on your Google account
+- Generate an "App Password" for your application
+- Use this app password in the `GMAIL_PASS` environment variable
+
+For reCAPTCHA setup:
+- Visit [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin)
+- Create a new reCAPTCHA v3 site
+- Copy both the Site Key and Secret Key
+
+For development, you can use reCAPTCHA's test keys:
+- Site Key: `6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI`
+- Secret Key: `6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe`
+
 ### Styling
 Modify `tailwind.config.js` to customize:
 - Color palette
@@ -213,4 +242,4 @@ For questions about this portfolio template or to discuss collaboration opportun
 
 ---
 
-Built with ❤️ using Next.js, React, and Tailwind CSS 
+Built with ❤️ using Next.js, React, and Tailwind CSS
