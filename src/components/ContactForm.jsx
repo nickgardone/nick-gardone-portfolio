@@ -53,10 +53,8 @@ export default function ContactForm() {
       return token;
     } catch (error) {
       console.error('reCAPTCHA error:', error);
-      // If reCAPTCHA fails, we'll still try to send the form
-      const mockToken = 'mock-token';
-      setRecaptchaToken(mockToken);
-      return mockToken;
+      setError('Failed to verify spam protection. Please try again.');
+      throw error;
     }
   };
 
@@ -245,10 +243,28 @@ export default function ContactForm() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-red-600/20 border border-red-500/30 rounded-lg p-4 mb-6 flex items-center space-x-3"
+                  className="bg-red-600/20 border border-red-500/30 rounded-lg p-4 mb-6"
                 >
-                  <AlertCircle className="w-5 h-5 text-red-400" />
-                  <span className="text-red-400">{error}</span>
+                  <div className="flex items-start space-x-3">
+                    <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-red-400">{error}</span>
+                      {error.includes('configured') && (
+                        <p className="text-red-300 text-sm mt-2">
+                          If you're the site administrator, please check the{' '}
+                          <a 
+                            href="https://github.com/nickgardone/nick-gardone-portfolio/blob/main/CONTACT_FORM_TROUBLESHOOTING.md" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="underline hover:text-white"
+                          >
+                            troubleshooting guide
+                          </a>{' '}
+                          for detailed setup instructions.
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
               )}
 

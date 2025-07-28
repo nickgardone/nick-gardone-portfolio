@@ -128,31 +128,23 @@ Update the projects array in:
 ### Contact Form Configuration
 To enable the contact form functionality, you need to set up environment variables:
 
-1. Create a `.env.local` file in the root directory
-2. Add the following variables:
-   ```
-   # Gmail Configuration (required for contact form)
-   GMAIL_USER=your_gmail_address@gmail.com
-   GMAIL_PASS=your_gmail_app_password
-
-   # Google reCAPTCHA v3 (optional but recommended)
-   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
-   RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key_here
-   ```
-
-For Gmail configuration:
-- Enable 2-Factor Authentication on your Google account
-- Generate an "App Password" for your application
-- Use this app password in the `GMAIL_PASS` environment variable
-
-For reCAPTCHA setup:
-- Visit [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin)
-- Create a new reCAPTCHA v3 site
-- Copy both the Site Key and Secret Key
+1. For development, copy `.env.local.example` to `.env.local` and the form will simulate sending emails
+2. For production deployment, follow the detailed [Production Setup Guide](PRODUCTION_SETUP.md)
 
 For development, you can use reCAPTCHA's test keys:
 - Site Key: `6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI`
 - Secret Key: `6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe`
+
+If you encounter issues with the contact form in production, refer to the [Contact Form Troubleshooting Guide](CONTACT_FORM_TROUBLESHOOTING.md) for detailed debugging steps.
+
+You can also use the provided [test script](test-contact-form.js) to verify the contact form functionality:
+```bash
+# Test against your deployed site
+SITE_URL=https://your-domain.vercel.app node test-contact-form.js
+
+# Or edit the script to set your site URL directly
+node test-contact-form.js
+```
 
 ### Styling
 Modify `tailwind.config.js` to customize:

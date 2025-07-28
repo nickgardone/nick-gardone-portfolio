@@ -100,7 +100,13 @@ export default async function handler(req, res) {
     console.error('Missing or invalid Gmail configuration for production environment');
     return res.status(500).json({ 
       message: 'Email service not configured',
-      details: 'Please contact the site administrator'
+      details: 'Please contact the site administrator',
+      debug: {
+        gmailUserSet: !!process.env.GMAIL_USER,
+        gmailPassSet: !!process.env.GMAIL_PASS,
+        isPlaceholderUser: process.env.GMAIL_USER === 'your_gmail_address@gmail.com',
+        isPlaceholderPass: process.env.GMAIL_PASS === 'your_gmail_app_password'
+      }
     });
   }
   
@@ -108,7 +114,11 @@ export default async function handler(req, res) {
     console.error('Missing or invalid reCAPTCHA configuration');
     return res.status(500).json({ 
       message: 'Spam protection not configured',
-      details: 'Please contact the site administrator'
+      details: 'Please contact the site administrator',
+      debug: {
+        recaptchaSecretSet: !!process.env.RECAPTCHA_SECRET_KEY,
+        isPlaceholderSecret: process.env.RECAPTCHA_SECRET_KEY === 'your_recaptcha_secret_key_here'
+      }
     });
   }
 
