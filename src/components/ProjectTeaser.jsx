@@ -56,17 +56,17 @@ const ProjectTeaser = ({ project, index }) => {
         onClick={handleProjectClick}
       >
         {/* Background Image */}
-        <div className="relative h-64 lg:h-80 overflow-hidden">
+        <div className="relative min-h-[320px] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 to-dark-950/90 z-10" />
           <div className="absolute inset-0 bg-dark-800" />
           
           {/* Overlay Content */}
-          <div className="relative z-20 h-full flex flex-col justify-between p-6">
+          <div className="relative z-20 h-full flex flex-col p-6">
             {/* Top Section */}
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between mb-4">
               <div className="space-y-2">
                 {Array.isArray(tags)
-                  ? tags.slice(0, 3).map((tag, idx) => (
+                  ? tags.slice(0, 4).map((tag, idx) => (
                       <span
                         key={tag}
                         className="inline-block px-3 py-1 bg-primary-600/20 text-primary-400 text-xs font-medium rounded-full border border-primary-500/30 mr-2 mb-2"
@@ -80,54 +80,38 @@ const ProjectTeaser = ({ project, index }) => {
                       </span>
                     )}
                 {featured && (
-                  <span className="inline-block px-3 py-1 bg-accent-600/20 text-accent-400 text-xs font-medium rounded-full border border-accent-500/30 ml-2">
-                    Featured
-                  </span>
+                  <span className="inline-block px-3 py-1 bg-purple-600/20 text-purple-300 text-xs font-medium rounded-full border border-purple-500/30">Featured</span>
                 )}
               </div>
-              
-              <motion.div
-                onClick={(e) => e.stopPropagation()}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 rounded-lg bg-dark-800/50 border border-gray-700 text-gray-300 hover:text-white hover:bg-dark-700/50 transition-all duration-200 backdrop-blur-sm"
-              >
-                <ExternalLink size={16} />
-              </motion.div>
             </div>
 
-            {/* Bottom Section */}
-            <div className="space-y-4">
+            {/* Project Content */}
+            <div className="space-y-3 flex-grow">
+              {/* Title and Role */}
               <div>
-                <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors duration-200">
+                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary-400 transition-colors duration-200 line-clamp-1">
                   {title}
                 </h3>
-                <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
-                  {headline}
+                <p className="text-sm text-gray-400 line-clamp-1">
+                  {role}
                 </p>
               </div>
 
-              {/* Project Meta */}
-              {/* Removed duration and team size display */}
+              {/* Headline */}
+              <p className="text-sm text-gray-300 font-medium leading-relaxed line-clamp-2">
+                {headline}
+              </p>
 
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2">
-                {Array.isArray(tags)
-                  ? tags.slice(3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-dark-800/50 text-gray-300 text-xs rounded border border-gray-700"
-                      >
-                        {tag}
-                      </span>
-                    ))
-                  : null}
-                {Array.isArray(tags) && tags.length > 6 && (
-                  <span className="px-2 py-1 bg-dark-800/50 text-gray-500 text-xs rounded border border-gray-700">
-                    +{tags.length - 6} more
-                  </span>
-                )}
-              </div>
+              {/* Overview */}
+              <p className="text-sm text-gray-400 leading-relaxed line-clamp-2">
+                {overview}
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <div className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium text-sm group/link transition-colors duration-200 mt-4">
+              <span>View Details</span>
+              <ArrowRight size={14} className="transform group-hover/link:translate-x-1 transition-transform duration-200" />
             </div>
           </div>
         </div>

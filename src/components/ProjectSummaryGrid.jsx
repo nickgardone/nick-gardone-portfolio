@@ -150,32 +150,6 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
                   )}
                 </div>
 
-                {/* External Links */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {project.hasCaseStudy && (
-                    <motion.div
-                      onClick={(e) => e.stopPropagation()}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-2 rounded-lg bg-dark-800/80 border border-gray-700 text-gray-300 hover:text-primary-400 hover:bg-dark-700/80 transition-all duration-200 backdrop-blur-sm"
-                      title="View Case Study"
-                    >
-                      <ExternalLink size={14} />
-                    </motion.div>
-                  )}
-                  {project.hasDemo && (
-                    <motion.div
-                      onClick={(e) => e.stopPropagation()}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-2 rounded-lg bg-dark-800/80 border border-gray-700 text-gray-300 hover:text-accent-400 hover:bg-dark-700/80 transition-all duration-200 backdrop-blur-sm"
-                      title="View Demo"
-                    >
-                      <ArrowRight size={14} />
-                    </motion.div>
-                  )}
-                </div>
-
                 {/* Project Content */}
                 <div className="space-y-4">
                   {/* Title and Role */}
@@ -260,4 +234,4 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
   );
 };
 
-export default ProjectSummaryGrid; 
+export default ProjectSummaryGrid;
