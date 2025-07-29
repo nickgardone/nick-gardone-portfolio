@@ -133,7 +133,7 @@ export default function Portfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch"
           >
             {projects.map((project, index) => (
               <ProjectTeaser key={project.title} project={project} index={index} />

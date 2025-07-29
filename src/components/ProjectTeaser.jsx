@@ -50,18 +50,18 @@ const ProjectTeaser = ({ project, index }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
         whileHover={{ y: -8 }}
-        className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+        className={`group relative overflow-hidden rounded-2xl cursor-pointer h-full flex flex-col ${
           featured ? 'col-span-full lg:col-span-2' : ''
         }`}
         onClick={handleProjectClick}
       >
         {/* Background Image */}
-        <div className="relative min-h-[320px] overflow-hidden">
+        <div className="relative h-[320px] overflow-hidden flex flex-col h-full">
           <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 to-dark-950/90 z-10" />
           <div className="absolute inset-0 bg-dark-800" />
           
           {/* Overlay Content */}
-          <div className="relative z-20 h-full flex flex-col p-6">
+          <div className="relative z-20 h-full flex flex-col p-6 justify-between">
             {/* Top Section */}
             <div className="flex items-start justify-between mb-4">
               <div className="space-y-2">
