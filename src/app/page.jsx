@@ -125,7 +125,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex items-center justify-center space-x-6 pt-8"
+              className="flex items-center justify-center space-x-6 pt-8 pb-12"
             >
               <motion.a
                 href="mailto:NGardone@Gmail.com"
