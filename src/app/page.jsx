@@ -25,9 +25,9 @@ export default function Home() {
 
   const stats = [
     { label: "Years Experience", value: "10+" },
-    { label: "Products Launched", value: "15+" },
-    { label: "Team Members Led", value: "50+" },
-    { label: "Revenue Impact", value: "$100M+" },
+    { label: "Products Launched", value: "25+" },
+    { label: "Team Members Led", value: "75+" },
+    { label: "Revenue Impact", value: "$120M+" },
   ];
   const isMobile = useIsMobile();
 
@@ -188,11 +188,7 @@ export default function Home() {
         </div>
       </section>
       {/* Featured Projects */}
-      {isMobile ? (
-        <ProjectSummaryGrid limit={4} showViewAllAfter={4} />
-      ) : (
-        <ProjectSummaryGrid />
-      )}
+      <ProjectSummaryGrid limit={5} showViewAllAfter={5} />
       {/* Recommendations Section */}
       <section className="section-padding bg-dark-900">
         <div className="container-custom">
@@ -266,4 +262,4 @@ export default function Home() {
       <Footer />
     </div>
   );
-} 
+}

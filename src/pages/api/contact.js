@@ -87,6 +87,15 @@ export default async function handler(req, res) {
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY ? 'SET' : 'NOT_SET'
   });
   
+  // Additional debugging for Gmail configuration
+  console.log('Gmail config details:', {
+    gmailUserLength: process.env.GMAIL_USER ? process.env.GMAIL_USER.length : 0,
+    gmailPassLength: process.env.GMAIL_PASS ? process.env.GMAIL_PASS.length : 0,
+    isPlaceholderUser: process.env.GMAIL_USER === 'your_gmail_address@gmail.com',
+    isPlaceholderPass: process.env.GMAIL_PASS === 'your_gmail_app_password',
+    gmailUserSample: process.env.GMAIL_USER ? process.env.GMAIL_USER.substring(0, 3) + '...' + process.env.GMAIL_USER.slice(-10) : 'NOT_SET'
+  });
+  
   // In development, we can simulate success without actual email sending
   if (isDevEnvironment && !hasGmailConfig) {
     console.warn('Gmail not configured, simulating successful email send in development');
@@ -99,7 +108,7 @@ export default async function handler(req, res) {
   if (!isDevEnvironment && !hasGmailConfig) {
     console.error('Missing or invalid Gmail configuration for production environment');
     return res.status(500).json({ 
-      message: 'Email service not configured',
+      message: 'Email service not properly configured',
       details: 'Please contact the site administrator',
       debug: {
         gmailUserSet: !!process.env.GMAIL_USER,
@@ -113,7 +122,7 @@ export default async function handler(req, res) {
   if (!hasRecaptchaConfig && !isMockToken) {
     console.error('Missing or invalid reCAPTCHA configuration');
     return res.status(500).json({ 
-      message: 'Spam protection not configured',
+      message: 'Spam protection not properly configured',
       details: 'Please contact the site administrator',
       debug: {
         recaptchaSecretSet: !!process.env.RECAPTCHA_SECRET_KEY,
@@ -123,6 +132,14 @@ export default async function handler(req, res) {
   }
 
   // Configure the transporter
+  // Debug logging for transporter configuration
+  console.log('Creating transporter with credentials:', {
+    userEmail: process.env.GMAIL_USER ? process.env.GMAIL_USER.substring(0, 3) + '...' + process.env.GMAIL_USER.slice(-10) : 'NOT_SET',
+    passLength: process.env.GMAIL_PASS ? process.env.GMAIL_PASS.length : 0,
+    isPlaceholderUser: process.env.GMAIL_USER === 'your_gmail_address@gmail.com',
+    isPlaceholderPass: process.env.GMAIL_PASS === 'your_gmail_app_password'
+  });
+  
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

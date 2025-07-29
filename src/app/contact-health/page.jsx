@@ -115,6 +115,11 @@ export default function ContactHealthCheck() {
               <div>
                 <h4 className="font-medium mb-2">Environment</h4>
                 <p className="text-gray-300 capitalize">{healthData.config.environment}</p>
+                {healthData.config.environment === 'production' && (
+                  <p className="text-xs text-yellow-400 mt-1">
+                    Note: In production, all credentials must be properly configured for the form to work.
+                  </p>
+                )}
               </div>
               
               <div>
@@ -138,6 +143,16 @@ export default function ContactHealthCheck() {
                       {healthData.config.gmail.configured ? 'Yes' : 'No'}
                     </span>
                   </div>
+                  {healthData.config.gmail.isPlaceholderUser && (
+                    <p className="text-xs text-yellow-400 mt-1">
+                      Warning: Using placeholder Gmail user. Update with your actual Gmail address.
+                    </p>
+                  )}
+                  {healthData.config.gmail.isPlaceholderPass && (
+                    <p className="text-xs text-yellow-400 mt-1">
+                      Warning: Using placeholder Gmail password. Update with your actual App Password.
+                    </p>
+                  )}
                 </div>
               </div>
               
@@ -162,6 +177,16 @@ export default function ContactHealthCheck() {
                       {(healthData.config.recaptcha.siteKeyConfigured && healthData.config.recaptcha.secretConfigured) ? 'Yes' : 'No'}
                     </span>
                   </div>
+                  {healthData.config.recaptcha.isPlaceholderSiteKey && (
+                    <p className="text-xs text-yellow-400 mt-1">
+                      Warning: Using placeholder reCAPTCHA site key. Update with your actual site key.
+                    </p>
+                  )}
+                  {healthData.config.recaptcha.isPlaceholderSecret && (
+                    <p className="text-xs text-yellow-400 mt-1">
+                      Warning: Using placeholder reCAPTCHA secret key. Update with your actual secret key.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

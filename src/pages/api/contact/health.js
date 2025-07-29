@@ -123,6 +123,11 @@ function getRecommendations(configStatus, gmailConnection) {
     recommendations.push('Ensure your production domain is added to your reCAPTCHA configuration in the Google Admin Console');
   }
 
+  // Additional recommendations for common issues
+  if (configStatus.environment === 'production' && !configStatus.gmail.configured) {
+    recommendations.push('In production, both GMAIL_USER and GMAIL_PASS must be set with valid credentials. Refer to the Gmail Configuration section in CONTACT_FORM_TROUBLESHOOTING.md');
+  }
+
   if (recommendations.length === 0) {
     recommendations.push('All configurations appear to be set correctly!');
   }
