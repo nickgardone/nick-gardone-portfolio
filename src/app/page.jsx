@@ -25,7 +25,7 @@ export default function Home() {
 
   const stats = [
     { label: "Years Experience", value: "10+" },
-    { label: "Products Launched", value: "25+" },
+    { label: "Products Launched", value: "20+" },
     { label: "Team Members Led", value: "75+" },
     { label: "Revenue Impact", value: "$120M+" },
   ];
