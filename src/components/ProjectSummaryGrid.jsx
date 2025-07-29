@@ -15,7 +15,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "VP, Senior Product Manager @ JPMorgan Chase",
       headline: "Launched home lending platform used by 5M+ customers, driving 2M+ visits.",
       overview: "Built a self-service digital mortgage platform integrated into Chase Mobile & Web, increasing HELOC applications by 4%.",
-      tags: ["Enterprise", "Fintech", "SaaS"],
+      tags: ["Enterprise Platform", "Fintech", "Engagement", "Retention"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false
@@ -25,7 +25,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Transformed call data into product insights using LLMs.",
       overview: "Used AI to summarize customer service calls, categorize sentiment, and reduce post-call work for agents.",
-      tags: ["AI/ML", "LLM", "Customer Experience", "Automation"],
+      tags: ["Artificial Intelligence", "Customer Experience", "Automation"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: true
@@ -35,7 +35,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Drove $36M+ in annual revenue via improved checkout UX.",
       overview: "Led experimentation and UX optimization to increase conversion rates across e-commerce properties.",
-      tags: ["A/B Testing", "E-commerce", "Analytics", "UX"],
+      tags: ["A/B Testing", "Conversion", "Omnichannel"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false
@@ -45,7 +45,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Boosted tool adoption from 60% to 82%, driving $25M in new revenue.",
       overview: "Increased Jewelry Consultant adoption of digital storefront tools with SSO access and structured campaigns, enabling remote selling.",
-      tags: ["RetailTech", "Internal Tools", "UX", "Growth"],
+      tags: ["Omnichannel", "Internal Tools", "Growth"],
       link: "#",
       hasCaseStudy: false,
       hasDemo: true
@@ -55,7 +55,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Reduced package loss by 7% and generated $6.5M in revenue.",
       overview: "Integrated UPS Access Point delivery option to improve logistics and customer satisfaction, coordinating with 200+ vendors.",
-      tags: ["Logistics", "E-commerce", "API Integration", "CX"],
+      tags: ["Omnichannel", "Conversion", "Customer Experience"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false
@@ -65,7 +65,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "Senior Product Manager @ Signet Jewelers",
       headline: "Reduced 62K annual customer service calls with milestone-based SMS/email updates.",
       overview: "Launched automated messaging across Signet brands for real-time order tracking, integrating with third-party SaaS platforms.",
-      tags: ["Notifications", "CRM", "Customer Support", "SaaS Integration"],
+      tags: ["Notifications", "Customer Support", "Cost Reduction"],
       link: "#",
       hasCaseStudy: false,
       hasDemo: false
@@ -75,7 +75,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "AVP, Product Manager @ JPMorgan Chase",
       headline: "Saved up to 9 FTE per bot through strategic automation.",
       overview: "Evangelized and built an RPA program for internal business processes, including feasibility scoring and stakeholder training.",
-      tags: ["RPA", "Change Management", "Enterprise Tools", "Operations"],
+      tags: ["RPA", "Enterprise Tools", "Automation"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false
@@ -85,7 +85,7 @@ const ProjectSummaryGrid = ({ limit, showViewAllAfter }) => {
       role: "AVP, Product Owner @ JPMorgan Chase",
       headline: "Migrated 1.5M accounts, sunsetting legacy platforms and roles.",
       overview: "Consolidated disparate mortgage accounts into unified systems through strategic field mapping, logic generation, and simultaneous dual-system updates.",
-      tags: ["Data Migration", "Fintech", "Legacy Systems", "Systems Integration"],
+      tags: ["Data Migration", "Fintech", "Process Optimization"],
       link: "#",
       hasCaseStudy: true,
       hasDemo: false
