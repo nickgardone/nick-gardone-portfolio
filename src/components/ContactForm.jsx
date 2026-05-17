@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import { loadRecaptchaScript, executeRecaptcha } from '../utils/recaptcha';
@@ -169,18 +169,6 @@ export default function ContactForm() {
                     <h3 className="text-white font-semibold">Email</h3>
                     <a href="mailto:NGardone@Gmail.com" className="text-blue-400 hover:text-blue-300">
                       NGardone@Gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold">Phone</h3>
-                    <a href="tel:+15857470213" className="text-blue-400 hover:text-blue-300">
-                      +1 (585) 747-0213
                     </a>
                   </div>
                 </div>
